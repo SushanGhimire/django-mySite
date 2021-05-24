@@ -1,31 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 50px;
-    }
-  </style>
-  <body>
-    <h1>All Post</h1>
-    {% for post in AllPosts %}
-    <h2>{{post.title}} -- {{post.published_date}}</h2>
-    <span>{{post.content}}</span>
-    {% endfor %}
-  </body>
-</html>
+{% extends 'base.html' %} 
+{% block content %} 
+{% for post in AllPosts %}
+<article>
+  <time>published: {{ post.published_date }}</time>
+  <h2><a href="">{{ post.title }}</a></h2>
+  <p>{{ post.content|linebreaksbr }}</p>
+</article>
+{% endfor %} {% endblock content%}
